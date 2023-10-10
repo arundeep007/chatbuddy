@@ -7,4 +7,6 @@ data class Message (
     val message:String,
     val sendBY:String,
     @ServerTimestamp
-    val timestamp: Date?=Date())
+    val timestamp: Date?=Date(),
+    val time:String=""
+    )

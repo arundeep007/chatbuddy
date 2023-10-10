@@ -28,7 +28,7 @@
         android:layout_marginHorizontal="@dimen/margin_horizontal"
         android:layout_marginTop="@dimen/_10sdp"
         android:scaleType="centerCrop"
-        android:src="@drawable/bg_dummy"
+        android:src="@drawable/ic_profile"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:shapeAppearanceOverlay="@style/circularImageViewShape" />

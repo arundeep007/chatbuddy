@@ -6,10 +6,12 @@ import android.os.Bundle
 import android.util.AttributeSet
 import android.view.View
 import com.example.chatbuddy.utils.SessionManager
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var sessionManger:SessionManager
+    lateinit var userId:String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -19,9 +21,16 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? {
 
-        sessionManger=SessionManager(context)
+        userId= FirebaseAuth.getInstance().currentUser?.email?.replace(".","").toString()
 
-       // setStatusOnline()
+        try {
+            //feature testing pending
+          //  setStatusOnline()
+        }catch (e:Exception)
+        {
+            //handling exception
+        }
+
         return super.onCreateView(name, context, attrs)
 
 
@@ -30,7 +39,16 @@ class MainActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
 
-        //setStatusOffline()
+        try {
+            //feature testing  pending
+          //  setStatusOffline()
+
+        }catch (e:Exception)
+        {
+            //handing exception
+        }
+
+
     }
 
 
@@ -43,7 +61,7 @@ class MainActivity : AppCompatActivity() {
         val updatedProfileUrl = "https://example.com/new_profile_url"
 
 // Specify the document reference for the user you want to update (replace "123" with the actual user ID)
-        val userDocumentRef = sessionManger.getDb().collection("users").document(sessionManger.getUserId()!!)
+        val userDocumentRef = sessionManger.getDb().collection("users").document(userId)
 
 // Create a map with the fields you want to update
         val updates = hashMapOf(
@@ -72,7 +90,7 @@ class MainActivity : AppCompatActivity() {
         val updatedProfileUrl = "https://example.com/new_profile_url"
 
 // Specify the document reference for the user you want to update (replace "123" with the actual user ID)
-        val userDocumentRef = sessionManger.getDb().collection("users").document(sessionManger.getUserId()!!)
+        val userDocumentRef = sessionManger.getDb().collection("users").document(userId)
 
 // Create a map with the fields you want to update
         val updates = hashMapOf(

@@ -14,6 +14,9 @@ import com.example.chatbuddy.model.Message
 import com.example.chatbuddy.model.User
 import com.example.chatbuddy.repositories.ChatRepository
 import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.Timestamp
+import java.text.SimpleDateFormat
+import java.util.*
 
 class ChatsFragment : BaseFragment() {
     private var binding: FragmentChatsBinding? = null
@@ -92,7 +95,6 @@ class ChatsFragment : BaseFragment() {
                     // The message was successfully added
 
 
-
                     scrollToLastMessage()
 
                 } else {
@@ -118,17 +120,21 @@ class ChatsFragment : BaseFragment() {
                 for (document in value?.documents!!) {
                     val messageData = document.data
                     if (messageData != null) {
+
+                        val timestamp = messageData["timestamp"] as Timestamp
+                        val value = convertFormat(timestamp)
                         val message = Message(
                             message = messageData["message"] as String,
                             sendBY = messageData["sendBY"] as String,
-                            // timestamp = messageData["timestamp"] as Timestamp
+                            time= value
+
                         )
                         messageList.add(message)
                     }
                 }
 
 
-              //  messageList.sortByDescending { it.timestamp }
+                //  messageList.sortByDescending { it.timestamp }
                 adapter = ChatAdapter(messageList)
 
                 binding?.recyclerViewChat?.adapter = adapter
@@ -170,6 +176,19 @@ class ChatsFragment : BaseFragment() {
             // Scroll to the last item in the adapter
             binding?.recyclerViewChat?.scrollToPosition(adapter.itemCount - 1)
         }
+
+
+    }
+
+    fun convertFormat(timestamp: Timestamp): String {
+        // Convert Timestamp to Date
+        val date = timestamp.toDate()
+
+// Format the Date to extract the time in 12-hour format with AM/PM
+        val timeFormat =
+            SimpleDateFormat("h:mm a", Locale.US) // Use Locale for language-specific formatting
+
+        return timeFormat.format(date)
     }
 
 }

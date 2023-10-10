@@ -30,8 +30,6 @@ class UsersFragment : BaseFragment(), OnItemClickListener {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentUsersBinding.inflate(layoutInflater)
-
-
         return binding?.root
     }
 
@@ -43,6 +41,8 @@ class UsersFragment : BaseFragment(), OnItemClickListener {
 
         // To get the initial list of users and listen for updates
         userRepository.getUsers { usersList ->
+
+
             adapter = UserAdapter(usersList, this)
             binding?.recyclerview?.adapter = adapter
 

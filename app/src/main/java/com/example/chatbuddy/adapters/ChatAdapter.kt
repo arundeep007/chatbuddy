@@ -34,16 +34,17 @@ class ChatAdapter(private val messages: List<Message>) : RecyclerView.Adapter<Ch
             holder.linearLayoutSender.visibility=View.VISIBLE
             holder.linearLayoutReceiver.visibility=View.GONE
             holder.messageSenderTextView.text=message.message
+            holder.timeSenderTextView.text= message.time
         }else
         {
             holder.linearLayoutReceiver.visibility=View.VISIBLE
-            holder.linearLayoutReceiver.visibility=View.GONE
+            holder.linearLayoutSender.visibility=View.GONE
             holder.messageReceiverTextView.text=message.message
+            holder.timeReceiverTextView.text= message.time
+
         }
 
-       // holder.timeSenderTextViewGroup.text = formatTimestamp(message.timestamp)
-      //  holder.timeReceiverTextView.text = formatTimestamp(message.timestamp)
-        // Format the timestamp as needed, e.g., using SimpleDateFormat
+
 
     }
 
@@ -61,10 +62,9 @@ class ChatAdapter(private val messages: List<Message>) : RecyclerView.Adapter<Ch
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val messageSenderTextView: TextView = itemView.findViewById(R.id.senderMessageTextView)
-        val messageReceiverTextView: TextView = itemView.findViewById(R.id.senderTimeTextView)
-        val timeSenderTextViewGroup: TextView = itemView.findViewById(R.id.receiverMessageTextView)
+        val messageReceiverTextView: TextView = itemView.findViewById(R.id.receiverMessageTextView)
+        val timeSenderTextView: TextView = itemView.findViewById(R.id.senderTimeTextView)
         val timeReceiverTextView: TextView = itemView.findViewById(R.id.receiverTimeTextView)
-
         val linearLayoutSender:LinearLayout = itemView.findViewById(R.id.senderBubble)
         val linearLayoutReceiver:LinearLayout = itemView.findViewById(R.id.receiverBubble)
     }
