@@ -37,7 +37,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/margin_horizontal"
-
+            android:inputType="textEmailAddress"
             android:layout_marginBottom="@dimen/_15sdp"
             android:background="@drawable/custum_edit_text"
             android:fontFamily="@font/sen_regular"
@@ -61,6 +61,7 @@
             android:fontFamily="@font/sen_regular"
             android:hint="@string/password"
             android:padding="@dimen/_10sdp"
+            android:inputType="textPassword"
             android:singleLine="true"
             android:layout_marginTop="@dimen/_15sdp"
             android:textSize="@dimen/_12ssp"

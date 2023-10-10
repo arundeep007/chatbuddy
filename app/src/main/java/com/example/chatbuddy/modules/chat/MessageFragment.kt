@@ -5,10 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.chatbuddy.BaseFragment
 import com.example.chatbuddy.R
 import com.example.chatbuddy.databinding.FragmentMessageBinding
 
-class MessageFragment : Fragment() {
+class MessageFragment : BaseFragment() {
     private var binding: FragmentMessageBinding?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

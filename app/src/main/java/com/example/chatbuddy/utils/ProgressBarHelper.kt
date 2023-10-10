@@ -5,7 +5,5 @@ class ProgressBarHelper {
     companion object
     {
 
-
-
     }
 }

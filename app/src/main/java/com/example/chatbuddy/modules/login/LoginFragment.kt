@@ -66,32 +66,37 @@ class LoginFragment : BaseFragment() {
             email.isEmpty()-> AppUtils.showToast("Email is Mandatory!",context)
             password.isEmpty()-> AppUtils.showToast("Password is Mandatory!",context)
             else -> {
-
                 when(true)
-
                 {
                     (!Patterns.EMAIL_ADDRESS.matcher(email).matches())->AppUtils.showToast("Please enter a Valid Email Address",context)
                     (password.length<=6)->AppUtils.showToast("Password length should be greater than 6 !",context)
 
                     else -> {
+
                         loginUser(email,password)
                     }
                 }
-
-
             }
         }
 
     }
 
     private fun loginUser(email: String, password: String) {
+
+        showLoadingAlert()
         
         auth.signInWithEmailAndPassword(email,password).addOnCompleteListener { 
             
             task->
+            hideLoadingAler()
             if (task.isSuccessful)
             {
                 AppUtils.showToast("Login Successful",context)
+
+
+                //Go to User listing Fragment
+
+                findNavController().navigate(R.id.action_loginFragment_to_usersFragment)
 
             }else
             {
