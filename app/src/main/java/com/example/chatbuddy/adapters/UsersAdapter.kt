@@ -1,6 +1,7 @@
 package com.example.chatbuddy.adapters
 
 
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chatbuddy.R
 import com.example.chatbuddy.utils.OnItemClickListener
+import com.example.chatbuddy.utils.loadImageFromUri
 import com.google.android.material.imageview.ShapeableImageView
 
 class UserAdapter(
@@ -29,6 +31,7 @@ class UserAdapter(
         // Bind data to the views
         // setting image after adding feature by using glide
         holder.username.text = data.username
+        holder.userImage.loadImageFromUri(Uri.parse(data.profileUrl))
 
 
         //after adding feature of online offline status

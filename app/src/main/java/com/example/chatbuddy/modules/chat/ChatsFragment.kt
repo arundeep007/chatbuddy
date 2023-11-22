@@ -1,6 +1,7 @@
 package com.example.chatbuddy.modules.chat
 
 import android.content.ContentValues.TAG
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,6 +14,7 @@ import com.example.chatbuddy.databinding.FragmentChatsBinding
 import com.example.chatbuddy.model.Message
 import com.example.chatbuddy.model.User
 import com.example.chatbuddy.repositories.ChatRepository
+import com.example.chatbuddy.utils.loadImageFromUri
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.Timestamp
 import java.text.SimpleDateFormat
@@ -75,6 +77,7 @@ class ChatsFragment : BaseFragment() {
 
         chatRepository = ChatRepository()
         binding?.tvUser2Name?.text = user2.username
+        binding?.ivUser2?.loadImageFromUri(Uri.parse(user2.profileUrl))
         binding?.btBack?.setOnClickListener {
             findNavController().popBackStack()
         }

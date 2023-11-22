@@ -8,10 +8,14 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.ktx.storage
 
 class SessionManager(context: Context) {
     private val firebaseAuth = FirebaseAuth.getInstance()
     private val db = FirebaseFirestore.getInstance()
+    private var storageRef = Firebase.storage.reference
+
     private val sharedPrefs: SharedPreferences = context.getSharedPreferences("UserData", Context.MODE_PRIVATE)
     companion object {
         // Add other session data keys as needed
@@ -39,6 +43,10 @@ class SessionManager(context: Context) {
     }
     fun getAuth(): FirebaseAuth {
         return firebaseAuth
+    }
+
+    fun getStorageRef(): StorageReference {
+        return storageRef
     }
 
 
